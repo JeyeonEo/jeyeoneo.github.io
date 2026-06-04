@@ -1,5 +1,18 @@
 # PROGRESS
 
+## [2026-06-04] Task: Fix page scroll
+
+### 완료 내용
+- `zen_matrix_soft_about_me_toggle_nav/code.html` — `<html>` 태그의 Figma 익스포트 잔재 인라인 스타일(`width: 1280px; height: 2131px; overflow: hidden; position: relative;`) 제거 → 페이지 스크롤 정상화
+- `zen_matrix_soft_landing_page_with_toggleable_right_nav/code.html` — `<body>` 의 `overflow-hidden` → `overflow-x-hidden` 변경 → 세로 스크롤 잠금 해제
+
+### 구현 결정사항
+- `project_hub_toggle_nav_1`, `study_archive_toggle_nav` 는 body에 `overflow-x-hidden`만 있어 세로 스크롤이 이미 작동하므로 수정 불필요
+- 카드/섹션 내부의 `overflow-hidden`은 레이아웃 용도이므로 유지
+
+### 다음 단계
+- 없음
+
 ## [2026-06-04] Task: Connect pages via navigation menu buttons
 
 ### 완료 내용
