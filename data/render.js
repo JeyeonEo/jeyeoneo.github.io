@@ -93,12 +93,17 @@ function renderSidebar() {
   var papersList = document.getElementById("sidebar-papers-list");
   var studiesList = document.getElementById("sidebar-studies-list");
 
+  var isRoot = window.location.pathname === "/" ||
+    window.location.pathname.endsWith("/index.html") ||
+    !window.location.pathname.includes("/zen_matrix_soft_");
+  var base = isRoot ? "" : "../";
+
   renderSidebarList(projectsList, typeof PROJECTS !== "undefined" ? PROJECTS : [], function (project) {
-    return createSidebarItem(project.id || project.title || "Project", "#projects", "project");
+    return createSidebarItem(project.id || project.title || "Project", base + "zen_matrix_soft_project_hub_toggle_nav_1/code.html", "project");
   });
 
   renderSidebarList(papersList, typeof PAPERS !== "undefined" ? PAPERS : [], function (paper) {
-    return createSidebarItem(paper.filename || paper.title || "Paper", "#papers", "paper");
+    return createSidebarItem(paper.filename || paper.title || "Paper", base + "zen_matrix_soft_papers/code.html", "paper");
   });
 
   renderSidebarList(studiesList, typeof STUDIES !== "undefined" ? STUDIES : [], function (study) {
@@ -106,7 +111,7 @@ function renderSidebar() {
       return null;
     }
 
-    return createSidebarItem(study.sidebar_name || study.title, "#study", "study");
+    return createSidebarItem(study.sidebar_name || study.title, base + "zen_matrix_soft_study_archive_toggle_nav/code.html", "study");
   });
 }
 

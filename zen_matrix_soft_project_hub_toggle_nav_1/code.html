@@ -1,0 +1,508 @@
+<!DOCTYPE html><html class="dark" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ZEN_MATRIX | PROJECT_TERMINAL</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#003919",
+                    "inverse-surface": "#e1e3df",
+                    "surface-container": "#1d1f1d",
+                    "surface-tint": "#9caf9f",
+                    "surface-container-low": "#1a1c1a",
+                    "inverse-primary": "#006e20",
+                    "on-secondary-fixed-variant": "#3f493f",
+                    "surface-container-high": "#272a27",
+                    "secondary": "#bdcbbd",
+                    "surface-dim": "#121412",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "primary-fixed": "#9caf9f",
+                    "tertiary-fixed-dim": "#4de082",
+                    "tertiary-container": "#6dfe9c",
+                    "on-surface": "#e1e3df",
+                    "inverse-on-surface": "#2e312e",
+                    "error-container": "#93000a",
+                    "on-secondary": "#283428",
+                    "on-secondary-fixed": "#131f13",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-highest": "#323532",
+                    "on-primary-fixed": "#002105",
+                    "background": "#121412",
+                    "tertiary-fixed": "#6dfe9c",
+                    "outline-variant": "#434943",
+                    "primary-fixed-dim": "#9caf9f",
+                    "on-surface-variant": "#c1c9c1",
+                    "on-background": "#e1e3df",
+                    "surface": "#121412",
+                    "on-tertiary-fixed-variant": "#005227",
+                    "surface-container-lowest": "#0d0f0d",
+                    "tertiary": "#ffffff",
+                    "surface-variant": "#323532",
+                    "on-tertiary-fixed": "#00210c",
+                    "on-primary-container": "#007523",
+                    "on-primary": "#00390c",
+                    "secondary-fixed": "#d9e7d9",
+                    "secondary-container": "#404a40",
+                    "on-tertiary-container": "#007439",
+                    "primary": "#ffffff",
+                    "primary-container": "#9caf9f",
+                    "outline": "#8d938d",
+                    "on-secondary-container": "#b9c7b9",
+                    "secondary-fixed-dim": "#bdcbbd",
+                    "on-primary-fixed-variant": "#005316",
+                    "surface-bright": "#383a37"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "max-width": "1200px",
+                    "gutter": "16px",
+                    "margin-desktop": "40px",
+                    "margin-mobile": "16px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Space Grotesk"],
+                    "headline-md": ["Space Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "body-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "mono": ["JetBrains Mono", "monospace"],
+                    "sans": ["Manrope", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .pixel-grid {
+            background-image: radial-gradient(circle, #2a2c2a 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .glow-sm {
+            text-shadow: 0 0 8px rgba(156, 175, 159, 0.4);
+        }
+        .glass-panel {
+            background: rgba(18, 20, 18, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(156, 175, 159, 0.1);
+        }
+        .scanline {
+            background: linear-gradient(to bottom, transparent 50%, rgba(156, 175, 159, 0.02) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #9caf9f; border-radius: 0px; }
+        
+        @keyframes matrix-rain {
+            0% { transform: translateY(-100%); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .matrix-column {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            animation: matrix-rain linear infinite;
+        }
+        
+        /* Sidebar transition */
+        #side-nav {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #side-nav.translate-x-full {
+            transform: translateX(100%);
+        }
+        #side-nav-backdrop {
+            transition: opacity 0.4s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed-dim selection:text-on-primary-fixed min-h-screen overflow-x-hidden font-sans">
+<!-- Subtle Scanline Overlay -->
+<div class="fixed inset-0 z-[999] pointer-events-none scanline"></div>
+<!-- Background Elements -->
+<div class="fixed inset-0 pointer-events-none z-0 pixel-grid opacity-30"></div>
+<div class="fixed inset-0 pointer-events-none z-0 opacity-5 overflow-hidden">
+<div class="flex justify-around w-full" id="matrix-container">
+<script>
+            const chars = "공허법경계각성침묵흐름데이터매트릭스선디지털";
+            const container = document.getElementById('matrix-container');
+            for (let i = 0; i < 20; i++) {
+                const col = document.createElement('div');
+                col.className = 'matrix-column font-mono text-primary-fixed-dim text-lg opacity-40';
+                col.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                col.style.animationDelay = (Math.random() * 5) + 's';
+                col.innerText = Array(20).fill(0).map(() => chars[Math.floor(Math.random() * chars.length)]).join('');
+                container.appendChild(col);
+            }
+        </script><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 12.6422s; animation-delay: 3.60989s;">이법선털데이흐릭디털디법묵묵릭터법릭흐릭</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 5.70804s; animation-delay: 2.91062s;">경릭경이지매공경릭터터매털지털트릭흐터털</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 12.1544s; animation-delay: 1.08234s;">름계데법흐법성묵침각지허허경각털트이지묵</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 11.7324s; animation-delay: 4.49601s;">성디디허매경공성름털흐트침매터름선스트름</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 5.62248s; animation-delay: 0.883044s;">경공지각름트털허이허지성트침공흐디데터계</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 5.96826s; animation-delay: 0.378143s;">경털허흐릭침묵이이공스이법이이스각터성성</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 13.9491s; animation-delay: 3.30366s;">트털허선스이트름선릭름디허이경릭털릭각묵</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 5.98161s; animation-delay: 1.06475s;">트각스경지릭터지데디름경묵법터침이침매릭</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 8.88706s; animation-delay: 4.79496s;">지계매름데선각스계매묵스침경트계선트각디</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 9.91851s; animation-delay: 0.951494s;">릭데이선경릭법법선흐터트릭트스법공경매트</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 12.3235s; animation-delay: 2.30761s;">선선지이공선침트디터지흐법지법각지계데름</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 6.37498s; animation-delay: 4.66966s;">름공터묵공매름트릭지털각성경묵스공이선공</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 9.98041s; animation-delay: 4.62579s;">디지침허데침각매법스지스성디경매터디침법</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 9.08118s; animation-delay: 4.8811s;">릭흐흐털데데법묵매경스경매디릭터선성법털</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 8.97231s; animation-delay: 3.87437s;">데디매공스디흐경공흐털터터트계데털데성릭</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 5.50991s; animation-delay: 0.119293s;">법공법계법릭릭성릭털성매법허트선침침지릭</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 10.9049s; animation-delay: 4.56004s;">각름공계털선데지공릭데성디데터트스이매데</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 9.81946s; animation-delay: 3.85285s;">디데공각데묵법디지허매름경터릭공묵털경선</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 6.16277s; animation-delay: 2.84726s;">터털각지선트침털스흐매흐데스침터법각허법</div><div class="matrix-column font-mono text-primary-fixed-dim text-lg opacity-40" style="animation-duration: 8.79133s; animation-delay: 1.69067s;">흐성스경계매름허묵지터트각침선법법데각트</div>
+</div>
+</div>
+<!-- Backdrop Overlay for Sidebar -->
+<div class="fixed inset-0 bg-background/60 backdrop-blur-sm z-[110] opacity-0 pointer-events-none" id="side-nav-backdrop"></div>
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-[120] flex justify-between items-center px-margin-desktop py-4 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30">
+<a href="../index.html" class="font-bold text-headline-md tracking-tighter text-primary">JEYEON_YONA_EO</a>
+<div class="hidden md:flex gap-8 items-center">
+
+<a class="text-primary border-b-2 border-primary-fixed pb-1 font-body-md hover:text-primary-fixed hover:glow-sm transition-all duration-300" href="../zen_matrix_soft_project_hub_toggle_nav_1/code.html">PROJECTS</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary-fixed hover:glow-sm transition-all duration-300" href="../zen_matrix_soft_papers/code.html">PAPERS</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary-fixed hover:glow-sm transition-all duration-300" href="../zen_matrix_soft_study_archive_toggle_nav/code.html">STUDY</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary-fixed hover:glow-sm transition-all duration-300" href="../zen_matrix_soft_about_me_toggle_nav/code.html">ABOUT</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="p-2 hover:bg-primary-fixed-dim/10 rounded-full transition-colors flex items-center justify-center" id="menu-toggle-btn">
+<span class="material-symbols-outlined text-secondary hover:text-primary-fixed transition-colors cursor-pointer scale-110" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Toggleable Right Side Navigation Bar -->
+<aside class="flex flex-col h-full w-80 fixed right-0 top-0 bg-surface-container-lowest border-l border-outline-variant/10 z-[130] pt-8 shadow-2xl translate-x-full" id="side-nav">
+<div class="flex justify-between items-center px-6 mb-8">
+<div class="text-primary-fixed-dim/50 font-label-sm text-[9px] uppercase tracking-widest">ROOT_DIRECTORY</div>
+<button class="text-on-surface-variant hover:text-primary-fixed-dim transition-colors" id="menu-close-btn">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<nav class="flex-grow font-label-sm text-[11px] tracking-widest uppercase pb-10 overflow-y-auto">
+<!-- Projects Section -->
+<div class="mb-2">
+<a href="../zen_matrix_soft_project_hub_toggle_nav_1/code.html" class="flex items-center px-6 py-2 text-primary-fixed-dim cursor-pointer hover:bg-primary-fixed-dim/5 transition-colors group">
+<span class="material-symbols-outlined text-[16px] mr-2" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+<span class="material-symbols-outlined text-[16px] mr-3" data-icon="folder_open">folder_open</span>
+<span class="">Projects / 프로젝트</span>
+</a>
+<div class="ml-10 border-l border-primary-fixed-dim/20 space-y-1 mt-1" id="sidebar-projects-list">
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors relative group/item">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="article">article</span>
+<span class="">Neural_Emptiness</span>
+</div>
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors relative group/item">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="article">article</span>
+<span class="">Zen_Matrix_Core</span>
+</div>
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors relative group/item">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="article">article</span>
+<span class="">HypeSpot_V2</span>
+</div>
+</div>
+</div>
+<!-- Papers Section -->
+<div class="mb-2">
+<a href="../zen_matrix_soft_papers/code.html" class="flex items-center px-6 py-2 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer hover:bg-primary-fixed-dim/5 transition-colors group">
+<span class="material-symbols-outlined text-[16px] mr-2" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+<span class="material-symbols-outlined text-[16px] mr-3" data-icon="folder_open">folder_open</span>
+<span class="">Papers / 논문</span>
+</a>
+<div class="ml-10 border-l border-primary-fixed-dim/20 space-y-1 mt-1" id="sidebar-papers-list">
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors relative">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="description">description</span>
+<span class="">Sunyata_DL_v1.pdf</span>
+</div>
+<div class="flex items-center px-4 py-1.5 text-primary-fixed-dim border-r-2 border-primary-fixed-dim bg-primary-fixed-dim/5 cursor-pointer relative">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2" data-icon="description">description</span>
+<span class="">Logic_Silence.pdf</span>
+</div>
+</div>
+</div>
+<!-- Study Lists Section -->
+<div class="mb-2">
+<a href="../zen_matrix_soft_study_archive_toggle_nav/code.html" class="flex items-center px-6 py-2 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer hover:bg-primary-fixed-dim/5 transition-colors group">
+<span class="material-symbols-outlined text-[16px] mr-2" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+<span class="material-symbols-outlined text-[16px] mr-3" data-icon="folder_open">folder_open</span>
+<span class="">Study Lists / 공부</span>
+</a>
+<div class="ml-10 border-l border-primary-fixed-dim/20 space-y-1 mt-1" id="sidebar-studies-list">
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant cursor-pointer hover:text-primary-fixed-dim transition-colors relative">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="folder">folder</span>
+<span class="">Coursera_Certs</span>
+</div>
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors relative">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="auto_stories">auto_stories</span>
+<span class="">Philosophy_Deep</span>
+</div>
+<div class="flex items-center px-4 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim cursor-pointer transition-colors relative">
+<div class="absolute left-0 w-2 h-[1px] bg-primary-fixed-dim/20"></div>
+<span class="material-symbols-outlined text-[14px] mr-2 opacity-60" data-icon="terminal">terminal</span>
+<span class="">Algo_Practice</span>
+</div>
+</div>
+</div>
+<!-- About Section -->
+<a href="../zen_matrix_soft_about_me_toggle_nav/code.html" class="flex items-center text-on-surface-variant px-6 py-2 hover:bg-primary-fixed-dim/5 hover:text-primary-fixed-dim transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[16px] mr-2 opacity-0" data-icon="keyboard_arrow_right">keyboard_arrow_right</span>
+<span class="material-symbols-outlined text-[16px] mr-3" data-icon="alternate_email">alternate_email</span>
+<span class="">About / 소개</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant/10 pt-4 font-mono text-[9px] px-6 text-on-surface-variant/40 pb-8">
+    LOC: 37.5665° N, 126.9780° E
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-48 min-h-screen relative z-10 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left-side: Ranking & Info Section -->
+<section class="lg:col-span-3 space-y-gutter">
+<div class="glass-panel p-6 relative group glow-sm rounded-lg">
+<h3 class="font-mono text-primary-fixed-dim text-sm font-bold mb-8 flex items-center gap-2 uppercase tracking-tighter">
+<span class="material-symbols-outlined text-lg" data-icon="leaderboard">leaderboard</span>
+                    Ranking&nbsp;</h3>
+<div class="space-y-3 font-mono text-xs" id="project-ranking-list">
+<div class="p-4 border border-primary-fixed-dim/20 bg-surface-container-low hover:border-primary-fixed-dim transition-colors flex justify-between items-center group/item cursor-pointer rounded">
+<div class="flex items-center gap-3">
+<span class="text-primary-fixed-dim font-bold">#1</span>
+<span class="text-on-surface uppercase">hypespot</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim scale-75 group-hover/item:animate-bounce" data-icon="change_history" style="font-variation-settings: &quot;FILL&quot; 1;">change_history</span>
+</div>
+<div class="p-4 border border-outline-variant/30 bg-surface-container-low hover:border-primary-fixed-dim transition-colors flex justify-between items-center group/item cursor-pointer rounded">
+<div class="flex items-center gap-3">
+<span class="text-primary-fixed-dim font-bold">#2</span>
+<span class="text-on-surface uppercase">hypespot</span>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim scale-75 group-hover/item:animate-bounce" data-icon="change_history" style="font-variation-settings: &quot;FILL&quot; 1;">change_history</span>
+</div>
+<div class="p-4 border border-outline-variant/30 bg-surface-container-low opacity-50 flex justify-between items-center rounded">
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant">#3</span>
+<span class="text-on-surface-variant uppercase">hypespot</span>
+</div>
+<span class="text-on-surface-variant">—</span>
+</div>
+<div class="p-4 border border-outline-variant/30 bg-surface-container-low opacity-50 flex justify-between items-center rounded">
+<div class="flex items-center gap-3">
+<span class="text-on-surface-variant">#4</span>
+<span class="text-on-surface-variant uppercase">hypespot</span>
+</div>
+<span class="text-on-surface-variant">—</span>
+</div>
+</div>
+</div>
+<div class="glass-panel p-6 border-l-2 border-primary-fixed-dim/50 rounded-lg">
+<h4 class="font-mono text-primary-fixed-dim text-xs font-bold mb-4 tracking-[0.3em] uppercase">System_Info</h4>
+<ul class="space-y-4 font-mono text-[11px] leading-relaxed text-on-surface-variant" id="project-system-info">
+<li class="flex items-start gap-2">
+<span class="text-primary-fixed-dim mt-1">&gt;&gt;</span>
+<span class="">Digital enlightenment achieved through procedural generation.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary-fixed-dim mt-1">&gt;&gt;</span>
+<span class="">All system dependencies have been fully decoupled from linear reality.</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Main Stage: Detailed Project Card -->
+<section class="lg:col-span-9">
+<article class="glass-panel p-8 md:p-12 relative overflow-hidden min-h-[700px] flex flex-col glow-sm rounded-xl" id="project-article">
+<header class="text-center mb-16 relative">
+<h1 class="font-headline-lg text-primary mb-4 glow-sm tracking-tight uppercase">Neural Emptiness Engine</h1>
+<a class="font-mono text-primary-fixed-dim border border-primary-fixed-dim/30 px-6 py-2 hover:bg-primary-fixed-dim/10 transition-all inline-flex items-center gap-3 text-xs tracking-widest uppercase rounded" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="link">link</span>
+                        github.com/zen-matrix/neu-emp
+                    </a>
+</header>
+<div class="flex flex-wrap justify-center gap-3 mb-12 font-mono text-[10px]">
+<span class="border border-primary-fixed-dim px-3 py-1.5 text-primary-fixed-dim bg-primary-fixed-dim/5 uppercase tracking-widest rounded-full">[ #WEB_SERVICE ]</span>
+<span class="border border-outline-variant/50 px-3 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim hover:border-primary-fixed-dim transition-all cursor-default uppercase tracking-widest rounded-full">[ #AI_SYNTHESIS ]</span>
+<span class="border border-outline-variant/50 px-3 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim hover:border-primary-fixed-dim transition-all cursor-default uppercase tracking-widest rounded-full">[ #ZEN_ALGORITHM ]</span>
+</div>
+<div class="max-w-2xl mx-auto space-y-6 mb-16 relative">
+<div class="flex gap-6">
+<span class="text-primary-fixed-dim font-mono font-bold text-xl opacity-50">01</span>
+<p class="font-body-md text-on-surface/90 leading-relaxed italic border-l border-primary-fixed-dim/20 pl-6">
+                            Logic module designed to simulate the state of Sunyata within a distributed ledger. This engine processes noise into silence with 99.9% efficiency.
+                        </p>
+</div>
+<div class="flex gap-6">
+<span class="text-primary-fixed-dim font-mono font-bold text-xl opacity-50">02</span>
+<p class="font-body-md text-on-surface/90 leading-relaxed border-l border-primary-fixed-dim/20 pl-6">
+                            Core architecture leverages dithered neural weights to prevent overfitting in spiritual contexts. All protocols remain stateless.
+                        </p>
+</div>
+</div>
+<!-- High-Fidelity Preview Area -->
+<div class="relative w-full aspect-video bg-surface-container-highest border border-primary-fixed-dim/30 overflow-hidden group/img mt-auto glow-sm rounded-lg">
+<img alt="Sophisticated interface glowing with soft data visualizations" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2000ms] grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5vCEqJh8_YcEOwDx0b3XkSRg-M5DYZHjw6lZbXBh6--08_wnmAm1PousRvBxsILjeYRPtJrUhBnu1471qHJd_NaEOk9NidSzHfMeFs8BjqtKIVDhaOFvJgPjD31XWEP53wSH7Ow8dDvbHTSuWlvyQhS2QLwS7EOotWlEv8YSFkvgBCrz7wxN6yUsY14qOKpc8svaD229jiay3MZG3x8ZSe1UFxY2zxaC5JdQ_kk2pYATQ_WMIVpdeWdI-tGAr7iReBroh_lrYHnE">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="bg-surface/80 backdrop-blur-md px-10 py-5 border border-primary-fixed-dim text-primary-fixed-dim font-mono text-lg tracking-[0.5em] uppercase glow-sm rounded">
+                            논문 피규어_01
+                        </div>
+</div>
+<div class="absolute inset-0 pointer-events-none scanline"></div>
+</div>
+</article>
+</section>
+</div>
+</main>
+<!-- Bottom Project Ribbon -->
+<footer class="relative z-40">
+<div class="w-full py-8 px-margin-desktop bg-surface border-t border-outline-variant/30">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<!-- Brand -->
+<div class="font-bold text-headline-md tracking-tighter text-primary font-sans">
+      JEYEON_YONA_EO
+    </div>
+<!-- Navigation Links -->
+<nav class="flex flex-wrap justify-center gap-x-8 gap-y-2">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors font-sans uppercase tracking-wider" href="../index.html">Main</a>
+<a class="text-primary border-b border-primary-fixed font-body-md hover:text-primary transition-colors font-sans uppercase tracking-wider" href="../zen_matrix_soft_project_hub_toggle_nav_1/code.html">Projects</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors font-sans uppercase tracking-wider" href="../zen_matrix_soft_papers/code.html">Papers</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors font-sans uppercase tracking-wider" href="../zen_matrix_soft_study_archive_toggle_nav/code.html">Study</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-colors font-sans uppercase tracking-wider" href="../zen_matrix_soft_about_me_toggle_nav/code.html">About</a>
+</nav>
+<!-- Copyright -->
+<div class="text-on-surface-variant/60 font-label-sm uppercase tracking-widest text-center md:text-right">
+      © 2024 JEYEON_YONA_EO. ALL DEBTS REPAID.
+    </div>
+</div>
+</div></footer>
+<script>
+    // Sidebar Logic
+    const sideNav = document.getElementById('side-nav');
+    const sideNavBackdrop = document.getElementById('side-nav-backdrop');
+    const menuToggle = document.getElementById('menu-toggle-btn');
+    const menuClose = document.getElementById('menu-close-btn');
+
+    function toggleMenu() {
+        const isOpen = sideNav.classList.contains('translate-x-full');
+        if (isOpen) {
+            sideNav.classList.remove('translate-x-full');
+            sideNavBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            sideNavBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+            document.body.classList.add('overflow-hidden');
+        } else {
+            sideNav.classList.add('translate-x-full');
+            sideNavBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            sideNavBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+            document.body.classList.remove('overflow-hidden');
+        }
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuClose.addEventListener('click', toggleMenu);
+    sideNavBackdrop.addEventListener('click', toggleMenu);
+
+    // Pulse effect for ranking items
+    setInterval(() => {
+        const rankings = document.querySelectorAll('.group/item');
+        if (rankings.length > 0) {
+            const target = rankings[Math.floor(Math.random() * rankings.length)];
+            if (target) {
+                target.classList.add('border-primary-fixed-dim');
+                target.classList.add('bg-primary-fixed-dim/5');
+                setTimeout(() => {
+                    target.classList.remove('border-primary-fixed-dim');
+                    target.classList.remove('bg-primary-fixed-dim/5');
+                }, 500);
+            }
+        }
+    }, 4000);
+</script>
+<script src="../data/projects.js"></script>
+<script src="../data/papers.js"></script>
+<script src="../data/studies.js"></script>
+<script src="../data/render.js"></script>
+<script>
+(function () {
+  if (typeof PROJECTS === 'undefined' || !PROJECTS.length) return;
+  var p = PROJECTS[0];
+
+  var rankEl = document.getElementById('project-ranking-list');
+  if (rankEl && p.ranking) {
+    rankEl.innerHTML = p.ranking.map(function (r) {
+      if (r.active) {
+        return '<div class="p-4 border border-primary-fixed-dim/20 bg-surface-container-low hover:border-primary-fixed-dim transition-colors flex justify-between items-center group/item cursor-pointer rounded">' +
+          '<div class="flex items-center gap-3">' +
+            '<span class="text-primary-fixed-dim font-bold">#' + r.rank + '</span>' +
+            '<span class="text-on-surface uppercase">' + r.name + '</span>' +
+          '</div>' +
+          '<span class="material-symbols-outlined text-primary-fixed-dim scale-75 group-hover/item:animate-bounce" style="font-variation-settings: \'FILL\' 1;">change_history</span>' +
+        '</div>';
+      }
+      return '<div class="p-4 border border-outline-variant/30 bg-surface-container-low opacity-50 flex justify-between items-center rounded">' +
+        '<div class="flex items-center gap-3">' +
+          '<span class="text-on-surface-variant">#' + r.rank + '</span>' +
+          '<span class="text-on-surface-variant uppercase">' + r.name + '</span>' +
+        '</div>' +
+        '<span class="text-on-surface-variant">—</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  var infoEl = document.getElementById('project-system-info');
+  if (infoEl && p.system_info) {
+    infoEl.innerHTML = p.system_info.map(function (info) {
+      return '<li class="flex items-start gap-2">' +
+        '<span class="text-primary-fixed-dim mt-1">&gt;&gt;</span>' +
+        '<span>' + info + '</span>' +
+      '</li>';
+    }).join('');
+  }
+
+  var articleEl = document.getElementById('project-article');
+  if (!articleEl) return;
+  var tagsHtml = (p.tags || []).map(function (tag, i) {
+    return i === 0
+      ? '<span class="border border-primary-fixed-dim px-3 py-1.5 text-primary-fixed-dim bg-primary-fixed-dim/5 uppercase tracking-widest rounded-full">[ #' + tag + ' ]</span>'
+      : '<span class="border border-outline-variant/50 px-3 py-1.5 text-on-surface-variant hover:text-primary-fixed-dim hover:border-primary-fixed-dim transition-all cursor-default uppercase tracking-widest rounded-full">[ #' + tag + ' ]</span>';
+  }).join('');
+  var sectionsHtml = (p.sections || []).map(function (s) {
+    return '<div class="flex gap-6">' +
+      '<span class="text-primary-fixed-dim font-mono font-bold text-xl opacity-50">' + s.number + '</span>' +
+      '<p class="font-body-md text-on-surface/90 leading-relaxed' + (s.italic ? ' italic' : '') + ' border-l border-primary-fixed-dim/20 pl-6">' + s.text + '</p>' +
+    '</div>';
+  }).join('');
+  articleEl.innerHTML =
+    '<header class="text-center mb-16 relative">' +
+      '<h1 class="font-headline-lg text-primary mb-4 glow-sm tracking-tight uppercase">' + p.title + '</h1>' +
+      '<a class="font-mono text-primary-fixed-dim border border-primary-fixed-dim/30 px-6 py-2 hover:bg-primary-fixed-dim/10 transition-all inline-flex items-center gap-3 text-xs tracking-widest uppercase rounded" href="' + p.github_url + '">' +
+        '<span class="material-symbols-outlined text-sm">link</span>' +
+        p.github_label +
+      '</a>' +
+    '</header>' +
+    '<div class="flex flex-wrap justify-center gap-3 mb-12 font-mono text-[10px]">' + tagsHtml + '</div>' +
+    '<div class="max-w-2xl mx-auto space-y-6 mb-16 relative">' + sectionsHtml + '</div>' +
+    '<div class="relative w-full aspect-video bg-surface-container-highest border border-primary-fixed-dim/30 overflow-hidden group/img mt-auto glow-sm rounded-lg">' +
+      '<img alt="Sophisticated interface" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-[2000ms] grayscale" src="' + p.image_url + '">' +
+      '<div class="absolute inset-0 flex items-center justify-center pointer-events-none">' +
+        '<div class="bg-surface/80 backdrop-blur-md px-10 py-5 border border-primary-fixed-dim text-primary-fixed-dim font-mono text-lg tracking-[0.5em] uppercase glow-sm rounded">' + p.image_label + '</div>' +
+      '</div>' +
+      '<div class="absolute inset-0 pointer-events-none scanline"></div>' +
+    '</div>';
+})();
+</script>
+
+</body></html>
