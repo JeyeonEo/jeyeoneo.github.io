@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeyeon Yona Eo</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+    >
+    <meta
+      name="description"
+      content="Public profile, research papers, selected projects, and study archive for Jeyeon Yona Eo."
+    >
+    <link rel="stylesheet" href="assets/site.css">
+    <script src="data/about.js" defer></script>
+    <script src="data/projects.js" defer></script>
+    <script src="data/papers.js" defer></script>
+    <script src="data/studies.js" defer></script>
+    <script src="data/render.js" defer></script>
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="top-nav">
+        <a class="top-nav__brand" href="#top">Jeyeon Yona Eo</a>
+        <nav class="top-nav__links" id="top-nav-links" aria-label="Primary"></nav>
+        <button
+          class="menu-button"
+          id="menu-button"
+          type="button"
+          aria-label="Open navigation sidebar"
+          aria-expanded="false"
+          aria-controls="sidebar"
+        >
+          Menu
+        </button>
+      </header>
+
+      <div class="page-layout">
+        <main class="main-column" id="top">
+          <section class="section hero">
+            <div class="hero__wrap">
+              <div class="hero__panel">
+                <p class="hero__kicker">Public GitHub Pages profile</p>
+                <h1 class="hero__title">Research, teaching, and applied AI.</h1>
+                <p class="hero__copy">
+                  This site publishes only the public profile data in <code>data/</code>. Private source documents are
+                  intentionally excluded from deployment.
+                </p>
+                <div class="hero__actions" id="hero-actions"></div>
+              </div>
+              <aside class="hero__aside">
+                <ul class="metric-list">
+                  <li>
+                    <span class="metric-label">Deployment scope</span>
+                    <span class="metric-value"><code>index.html</code>, <code>assets/</code>, <code>data/</code> only</span>
+                  </li>
+                  <li>
+                    <span class="metric-label">Private material</span>
+                    <span class="metric-value">Private source files excluded from the Pages artifact</span>
+                  </li>
+                  <li>
+                    <span class="metric-label">Dependencies</span>
+                    <span class="metric-value">No runtime CDN, no external images</span>
+                  </li>
+                </ul>
+              </aside>
+            </div>
+          </section>
+
+          <section class="section" id="projects">
+            <div class="section-heading">
+              <p class="section-heading__eyebrow">Projects</p>
+              <h2>Selected public work</h2>
+              <p class="section-heading__copy">
+                Project cards render from the repository data files and avoid injecting HTML from content strings.
+              </p>
+            </div>
+            <div class="grid-two" id="projects-grid"></div>
+          </section>
+
+          <section class="section" id="papers">
+            <div class="section-heading">
+              <p class="section-heading__eyebrow">Papers</p>
+              <h2>Research outputs</h2>
+              <p class="section-heading__copy">
+                Titles, venues, and filenames are shown as plain text from the public metadata set.
+              </p>
+            </div>
+            <div class="paper-list" id="papers-list"></div>
+          </section>
+
+          <section class="section" id="study">
+            <div class="section-heading">
+              <p class="section-heading__eyebrow">Study archive</p>
+              <h2>Learning log</h2>
+              <p class="section-heading__copy">
+                Study entries stay hidden until there is explicit public data to publish.
+              </p>
+            </div>
+            <div class="study-list" id="study-list"></div>
+          </section>
+
+          <section class="section" id="about">
+            <div class="section-heading">
+              <p class="section-heading__eyebrow">About</p>
+              <h2>Public profile</h2>
+            </div>
+            <div class="about-panels">
+              <article class="about-panel">
+                <h3 class="about-heading" id="about-heading">Profile</h3>
+                <p class="about-role" id="about-role"></p>
+                <p class="about-contact" id="about-contact"></p>
+                <div class="stack" id="about-bio"></div>
+              </article>
+              <article class="timeline-panel">
+                <div class="timeline-list" id="about-timeline"></div>
+              </article>
+            </div>
+          </section>
+
+          <footer class="site-footer">
+            Public site source lives at the repository root. GitHub Pages deployment is allowlisted through the workflow artifact.
+          </footer>
+        </main>
+
+        <aside class="sidebar" id="sidebar" aria-label="Content index">
+          <section class="sidebar__section">
+            <h2 class="sidebar__title">Projects</h2>
+            <ul class="sidebar-list" id="sidebar-projects-list"></ul>
+          </section>
+          <section class="sidebar__section">
+            <h2 class="sidebar__title">Papers</h2>
+            <ul class="sidebar-list" id="sidebar-papers-list"></ul>
+          </section>
+          <section class="sidebar__section">
+            <h2 class="sidebar__title">Study</h2>
+            <ul class="sidebar-list" id="sidebar-studies-list"></ul>
+          </section>
+          <section class="sidebar__section">
+            <h2 class="sidebar__title">About</h2>
+            <ul class="sidebar-list">
+              <li class="sidebar-list__item"><a class="sidebar-list__link" href="#about">Profile timeline</a></li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+/*
+!/.github/
+/.github/*
+!/.github/workflows/
+/.github/workflows/*
+!/.github/workflows/deploy-pages.yml
+!/assets/
+!/assets/**
+!/data/
+!/data/**
+!/.gitignore
+!/.nojekyll
+!/README.md
+!/index.html
