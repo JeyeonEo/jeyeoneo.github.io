@@ -33,6 +33,11 @@ jobs:
           cp .nojekyll dist/.nojekyll
           cp -R assets dist/assets
           cp -R data dist/data
+          cp -R zen_matrix_soft_papers dist/zen_matrix_soft_papers
+          cp -R zen_matrix_soft_about_me_toggle_nav dist/zen_matrix_soft_about_me_toggle_nav
+          cp -R zen_matrix_soft_project_hub_toggle_nav_1 dist/zen_matrix_soft_project_hub_toggle_nav_1
+          cp -R zen_matrix_soft_study_archive_toggle_nav dist/zen_matrix_soft_study_archive_toggle_nav
+          cp -R zen_matrix_soft_landing_page_with_toggleable_right_nav dist/zen_matrix_soft_landing_page_with_toggleable_right_nav
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
