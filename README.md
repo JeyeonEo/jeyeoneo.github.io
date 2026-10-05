@@ -1,24 +1,14 @@
 # jeyeoneo.github.io
 
-Public GitHub Pages site for Jeyeon Yona Eo.
+Public portfolio for Jeyeon Yona Eo (어제연).
 
-## Published Scope
+## Public sections
+- `/` — landing
+- `/projects/` — selected research and applied AI work
+- `/papers/` — publications and public preprints
+- `/study/` — current research/study focus
+- `/about/` — profile and timeline
 
-This repository intentionally keeps only the deployment minimum:
+The site is static and uses no runtime Tailwind dependency. GitHub Pages deploys automatically from `main`.
 
-- `index.html`
-- `assets/`
-- `data/`
-- `.github/workflows/deploy-pages.yml`
-- `.nojekyll`
-
-Private source documents, local assistant settings, and design drafts are excluded from version control and from the Pages artifact.
-
-## Deployment
-
-GitHub Pages is deployed through GitHub Actions.
-
-- Automatic deploy on push to `main`
-- Manual deploy with `workflow_dispatch`
-
-The workflow packages only the public site files into the Pages artifact.
+Legacy prototype directories remain in repository history but are not included in the public Pages artifact.
