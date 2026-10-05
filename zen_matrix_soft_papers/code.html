@@ -191,7 +191,7 @@
 <a class="font-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-all" href="../zen_matrix_soft_study_archive_toggle_nav/code.html">STUDY</a>
 <a class="font-label-sm text-on-surface-variant hover:text-primary-fixed-dim transition-all" href="../zen_matrix_soft_about_me_toggle_nav/code.html">ABOUT</a>
 </div>
-<div class="font-label-sm text-on-surface-variant/40"> 2024 JEYEON_YONA_EO. ALL DEBTS REPAID.</div>
+<div class="font-label-sm text-on-surface-variant/40"> 2026 JEYEON_YONA_EO.</div>
 </div>
 </footer>
 <script>
@@ -231,7 +231,7 @@
   var statusLabels = { 2023: 'PUBLISHED', 2024: 'PUBLISHED', 2025: 'PUBLISHED', 2026: 'UNDER_REVIEW' };
 
   grid.innerHTML = PAPERS.map(function (p) {
-    var status = p.venue && p.venue.toLowerCase().includes('review') ? 'UNDER_REVIEW' : 'PUBLISHED';
+    var status = p.status || (p.venue && p.venue.toLowerCase().includes('review') ? 'UNDER_REVIEW' : 'PUBLISHED');
     var statusColor = status === 'UNDER_REVIEW'
       ? 'text-on-surface-variant border-outline-variant/50'
       : 'text-primary-fixed-dim border-primary-fixed-dim/40';
@@ -246,6 +246,7 @@
         (p.abstract ? '<p class="text-on-surface-variant text-body-md mb-4 line-clamp-3">' + p.abstract + '</p>' : '') +
         '<div class="pt-4 border-t border-outline-variant/20">' +
           '<span class="font-label-sm text-on-surface-variant/50 font-mono text-[10px]">' + (p.filename || '') + '</span>' +
+          (p.url ? '<a class="ml-4 font-label-sm text-primary-fixed-dim hover:text-primary" target="_blank" rel="noreferrer noopener" href="' + p.url + '">OPEN ↗</a>' : '') +
         '</div>' +
       '</div>' +
     '</article>';
