@@ -1,45 +1,38 @@
-// ============================================================
-// PROJECTS — 새 프로젝트 추가 시 이 배열에 항목을 추가하세요.
-// id       : 사이드바 파일트리에 표시되는 이름 (언더스코어 사용)
-// title    : 프로젝트 카드 헤딩 텍스트
-// github_url / github_label : GitHub 링크 및 표시 텍스트
-// tags     : 배지 목록 (첫 번째 태그가 강조색으로 표시됨)
-// sections : 번호 + 설명 블록 (italic: true/false)
-// ranking  : 보조 메타데이터
-// system_info : 공개 가능한 설명 목록
-// ============================================================
-
-const PROJECTS = [
+window.PROJECTS = [
   {
-    id: "Neural_Emptiness",
-    title: "Neural Emptiness Engine",
-    github_url: "https://github.com/zen-matrix/neu-emp",
-    github_label: "github.com/zen-matrix/neu-emp",
-    tags: ["WEB_SERVICE", "AI_SYNTHESIS", "ZEN_ALGORITHM"],
-    sections: [
-      {
-        number: "01",
-        text: "Logic module designed to simulate the state of Sunyata within a distributed ledger. This engine processes noise into silence with 99.9% efficiency.",
-        italic: true
-      },
-      {
-        number: "02",
-        text: "Core architecture leverages dithered neural weights to prevent overfitting in spiritual contexts. All protocols remain stateless.",
-        italic: false
-      }
-    ],
-    ranking: [
-      { rank: 1, name: "hypespot", active: true },
-      { rank: 2, name: "hypespot", active: true },
-      { rank: 3, name: "hypespot", active: false },
-      { rank: 4, name: "hypespot", active: false }
-    ],
-    system_info: [
-      "Digital enlightenment achieved through procedural generation.",
-      "All system dependencies have been fully decoupled from linear reality."
-    ]
+    category: "RESEARCH",
+    title: "Thinking-KT",
+    description: "A training-free knowledge tracing framework that uses test-time scaling with small reasoning models for prediction, personalized feedback, and learning recommendation in a unified output.",
+    tags: ["Knowledge Tracing","LLM","Test-Time Scaling","Education AI"],
+    url: "https://openreview.net/forum?id=Y3e2cEr0Ws",
+    url_label: "ARR / OpenReview",
+    secondary_url: "https://arxiv.org/abs/2601.01708",
+    secondary_label: "arXiv"
   },
-
-  { id: "Zen_Matrix_Core", title: "Zen Matrix Core" },
-  { id: "HypeSpot_V2", title: "HypeSpot V2" }
+  {
+    category: "RESEARCH + DATASET",
+    title: "BuddyBench & BuddyBench-Sim",
+    description: "A privacy-constrained multi-task benchmark for pediatric social-communication personalization, with a synthetic companion dataset for reproducible evaluation.",
+    tags: ["Benchmark","Personalization","Causal Inference","Synthetic Data"],
+    url: "https://arxiv.org/abs/2605.28089",
+    url_label: "Paper",
+    secondary_url: "https://github.com/JeyeonEo/BuddyBench-Sim",
+    secondary_label: "BuddyBench-Sim"
+  },
+  {
+    category: "APPLIED AI",
+    title: "Enterprise Agentic AI Training",
+    description: "Design and delivery of hands-on programs for enterprise teams using LLMs, RAG, agents, evaluation, and repeatable AI workflows. The work focuses on what teams can operate under real security, cost, and maintenance constraints.",
+    tags: ["Agentic AI","RAG","Evaluation","Enterprise AI"],
+    url: "https://github.com/JeyeonEo",
+    url_label: "GitHub"
+  },
+  {
+    category: "RESEARCH",
+    title: "Offline RL for UAV Emergency Network Recovery",
+    description: "Research on how dataset reward ratio and trajectory diversity affect offline reinforcement learning performance in sparse-reward UAV network-recovery tasks.",
+    tags: ["Offline RL","UAV","Dataset Quality","Sparse Reward"],
+    url: "https://doi.org/10.1109/LCOMM.2023.3339478",
+    url_label: "IEEE paper"
+  }
 ];
