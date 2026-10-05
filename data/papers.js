@@ -1,44 +1,42 @@
-// ============================================================
-// PAPERS — 새 논문 추가 시 이 배열에 항목을 추가하세요.
-// id       : 내부 식별자 (공백 없이)
-// filename : 사이드바에 표시되는 파일명 (확장자 포함)
-// title    : 논문 제목
-// year     : 출판 연도
-// venue    : 학술지 / 학회명
-// abstract : 초록 (선택 사항)
-// ============================================================
-
-const PAPERS = [
+window.PAPERS = [
   {
-    id: "can_expert_demonstration_guarantee_offline_performance",
-    filename: "Can_Expert_Demonstration_Guarantee_Offline_Performance_in_Sparse_Reward_Environment.pdf",
-    title: "Can Expert Demonstration Guarantee Offline Performance in Sparse Reward Environment?",
-    year: 2023,
-    venue: "ICML Data-centric Machine Learning Research Workshop",
-    abstract: ""
+    status: "ARR OCT 2026",
+    year: "2026",
+    title: "A Training-Free Large Reasoning Model-based Knowledge Tracing Framework for Unified Prediction and Prescription",
+    venue: "Thinking-KT · ARR October 2026 submission · arXiv:2601.01708",
+    abstract: "Thinking-KT studies training-free knowledge tracing with test-time scaling and shows how small reasoning models can combine prediction, feedback, and learning recommendation in one framework.",
+    url: "https://openreview.net/forum?id=Y3e2cEr0Ws",
+    url_label: "OpenReview",
+    secondary_url: "https://arxiv.org/abs/2601.01708",
+    secondary_label: "arXiv"
   },
   {
-    id: "impact_of_dataset_on_offline_rl_performance",
-    filename: "The_Impact_of_Dataset_on_Offline_Reinforcement_Learning_Performance_in_UAV_based_Emergency_Network_Recovery_Tasks.pdf",
-    title: "The Impact of Dataset on Offline Reinforcement Learning Performance in UAV-based Emergency Network Recovery Tasks",
-    year: 2024,
-    venue: "IEEE Communication Letter",
-    abstract: ""
-  },
-  {
-    id: "thinking_kt",
-    filename: "Thinking_KT_Large_Reasoning_Model_based_Knowledge_Tracing.pdf",
-    title: "Thinking-KT : Large Reasoning Model based-Knowledge Tracing",
-    year: 2026,
-    venue: "Under review at CIKM",
-    abstract: ""
-  },
-  {
-    id: "buddybench",
-    filename: "BuddyBench_A_Privacy_Constrained_Multi_Task_Benchmark_for_Pediatric_Social_Communication_Personalization.pdf",
+    status: "PREPRINT",
+    year: "2026",
     title: "BuddyBench: A Privacy-Constrained Multi-Task Benchmark for Pediatric Social-Communication Personalization",
-    year: 2026,
-    venue: "Under review at EMNLP",
-    abstract: ""
+    venue: "arXiv:2605.28089",
+    abstract: "A multi-task benchmark linking learning trajectories and clinical outcomes while protecting pediatric records, with BuddyBench-Sim as a synthetic companion dataset.",
+    url: "https://arxiv.org/abs/2605.28089",
+    url_label: "arXiv",
+    secondary_url: "https://github.com/JeyeonEo/BuddyBench-Sim",
+    secondary_label: "Code / synthetic data"
+  },
+  {
+    status: "PUBLISHED",
+    year: "2024",
+    title: "The Impact of Dataset on Offline Reinforcement Learning Performance in UAV-Based Emergency Network Recovery Tasks",
+    venue: "IEEE Communications Letters 28(5): 1058–1061",
+    abstract: "An empirical study of offline RL dataset quality in sparse-reward UAV network recovery, focusing on the trade-off between reward ratio and trajectory diversity.",
+    url: "https://doi.org/10.1109/LCOMM.2023.3339478",
+    url_label: "DOI"
+  },
+  {
+    status: "WORKSHOP",
+    year: "2023",
+    title: "Can Expert Demonstration Guarantee Offline Performance in Sparse Reward Environment?",
+    venue: "ICML Data-centric Machine Learning Research Workshop",
+    abstract: "A study questioning whether expert demonstrations alone guarantee strong offline RL performance in sparse-reward settings.",
+    url: "https://brainmil.wordpress.com/publications/",
+    url_label: "Publication list"
   }
 ];
