@@ -1,42 +1,42 @@
-// ============================================================
-// ABOUT — About 페이지 프로필 및 타임라인 데이터
-// bio      : 단락 배열 (HTML 태그 사용 가능)
-// timeline : 최신 순으로 정렬하세요. 마지막 항목은 구분선 없이 표시됩니다.
-// ============================================================
-
-const ABOUT = {
+window.ABOUT = {
   display_name: "Jeyeon Yona Eo | 어제연",
-  role: "AI instructor & researcher",
-  location: "jeyeon(dot)yona(dot)eo(at)gmail(dot)com",
+  role: "AI researcher · engineer · instructor",
+  location: "Seoul, Republic of Korea",
   bio: [
-    "Interested in AI Ethics, Affective computing, Knowledge Tracing. Based on RL and LLM.",
-    "Now studing Psychology @ Korea National Open University."
+    "I work across research and applied AI, with a current focus on LLM-based learning systems, agentic AI, human oversight, and evaluation. My earlier research background is in offline reinforcement learning and multi-agent systems.",
+    "Alongside research, I design and teach practical AI programs for working engineers and enterprise teams. I am interested in the gap between a model that works in a demo and a system that people can actually review, maintain, and use under real constraints."
   ],
+  focus: ["Human oversight","Agentic AI","Knowledge tracing","Offline RL","AI evaluation","AI education"],
   timeline: [
     {
-      date: "2024",
-      title: "AI instructor @ sparta-coding-camp",
-      description: "Teaching a lot"
+      date: "2026 —",
+      title: "Independent AI researcher & instructor",
+      description: "Researching LLM-based learning systems and human oversight while designing enterprise AI and agentic-AI programs."
+    },
+    {
+      date: "2026",
+      title: "Thinking-KT / BuddyBench",
+      description: "Research on training-free reasoning-model knowledge tracing and a privacy-constrained benchmark for pediatric social-communication personalization."
+    },
+    {
+      date: "2024 —",
+      title: "AI instructor · TeamSparta",
+      description: "Teaching and designing applied AI curricula for engineers and organizational training programs."
     },
     {
       date: "2024",
-      title: "AI engineer @ thingsflow-for-krafton",
-      description: "Worekd a lot"
+      title: "AI engineer · Thingsflow / KRAFTON",
+      description: "Worked on applied AI engineering."
     },
     {
       date: "2022",
-      title: "Visiting Scholar @ University of Southern California",
-      description: "Learned a lot"
+      title: "Visiting Scholar · University of Southern California",
+      description: "Research visit in the United States."
     },
     {
       date: "2020",
-      title: "Runned a startup and AI dating service",
-      description: "Failed a lot"
-    },
-    {
-      date: "2018",
-      title: "Majored CS @ Soongsil University, Seoul",
-      description: "Coded a lot"
-    },
+      title: "Startup & AI dating product",
+      description: "Built and launched a consumer social product, including an AI-based matching system."
+    }
   ]
 };
