@@ -1,0 +1,42 @@
+{
+  "name": "홍길동",
+  "role": "소프트웨어 엔지니어 · 강사",
+  "tagline": "배운 것을 기록하고, 기록을 연결합니다.",
+  "intro": "책, 강의, 논문을 읽고 정리하는 개인 아카이브입니다. 아래 내용은 모두 예시이므로 data/*.json 에서 본인 내용으로 바꿔 주세요.",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/your-id"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:you@example.com"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/your-id"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2024 – ",
+      "title": "회사명 · 시니어 엔지니어",
+      "desc": "담당 업무 한 줄 요약"
+    },
+    {
+      "period": "2021 – 2024",
+      "title": "회사명 · 엔지니어",
+      "desc": "담당 업무 한 줄 요약"
+    },
+    {
+      "period": "2019 – 2021",
+      "title": "OO대학교 대학원 석사",
+      "desc": "전공 및 연구 주제"
+    },
+    {
+      "period": "2015 – 2019",
+      "title": "OO대학교 학사",
+      "desc": "전공"
+    }
+  ]
+}

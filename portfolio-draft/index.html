@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio</title>
+  <meta name="description" content="Personal portfolio: books, courses, writing, teaching and a linked note graph.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500;1,6..72,700&family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top" id="brand">Portfolio</a>
+  <span class="top-mid" data-i18n="top.mid">PERSONAL ARCHIVE / BOOKS · COURSES · NOTES</span>
+  <button class="pill lang" id="lang" type="button" aria-label="Language">EN</button>
+</header>
+
+<div class="shell" id="top">
+  <aside class="side">
+    <p class="side-label" data-i18n="side.label">CONTENTS / 01</p>
+    <nav id="side-nav">
+      <a href="#profile" data-i18n="nav.profile">Profile</a>
+      <a href="#books" data-i18n="nav.books">Books</a>
+      <a href="#courses" data-i18n="nav.courses">Courses</a>
+      <a href="#writing" data-i18n="nav.writing">Writing</a>
+      <a href="#teaching" data-i18n="nav.teaching">Teaching</a>
+      <a href="#published" data-i18n="nav.published">Published</a>
+      <a href="#notes" data-i18n="nav.notes">Notes</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <p class="date" id="today"></p>
+      <h1 id="hero-name"></h1>
+      <p class="role" id="hero-role"></p>
+      <p class="lede" id="hero-tagline"></p>
+      <div class="chips" id="hero-links"></div>
+      <svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4C54 34 66 46 96 50 66 54 54 66 50 96 46 66 34 54 4 50 34 46 46 34 50 4Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    </section>
+
+    <section class="panel" id="profile">
+      <h2><span>01 /</span> <i data-i18n="sec.profile">Profile</i></h2>
+      <p class="body" id="intro"></p>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <section class="panel" id="books">
+      <h2><span>02 /</span> <i data-i18n="sec.books">Books</i></h2>
+      <div class="filters" id="books-filter"></div>
+      <div class="cards" id="books-list"></div>
+    </section>
+
+    <section class="panel" id="courses">
+      <h2><span>03 /</span> <i data-i18n="sec.courses">Courses &amp; Certificates</i></h2>
+      <div class="two">
+        <div>
+          <h3 data-i18n="sub.courses">Online courses</h3>
+          <ul class="rows" id="courses-list"></ul>
+        </div>
+        <div>
+          <h3 data-i18n="sub.certs">Certificates</h3>
+          <ul class="rows" id="certs-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="writing">
+      <h2><span>04 /</span> <i data-i18n="sec.writing">Papers &amp; Essays</i></h2>
+      <ul class="rows" id="writing-list"></ul>
+    </section>
+
+    <section class="panel" id="teaching">
+      <h2><span>05 /</span> <i data-i18n="sec.teaching">Teaching</i></h2>
+      <ul class="rows" id="teaching-list"></ul>
+    </section>
+
+    <section class="panel" id="published">
+      <h2><span>06 /</span> <i data-i18n="sec.published">Published</i></h2>
+      <div class="cards" id="products-list"></div>
+    </section>
+
+    <section class="panel" id="notes">
+      <h2><span>07 /</span> <i data-i18n="sec.notes">Paper Notes</i></h2>
+      <p class="sub" data-i18n="notes.sub"></p>
+      <div class="notes-wrap">
+        <div class="graph-box">
+          <div class="filters" id="graph-tags"></div>
+          <canvas id="graph" aria-label="Note graph"></canvas>
+          <p class="hint" data-i18n="notes.hint"></p>
+        </div>
+        <article class="reader" id="reader">
+          <p class="empty" data-i18n="notes.empty"></p>
+        </article>
+      </div>
+      <ul class="rows" id="notes-list"></ul>
+    </section>
+
+    <footer class="foot">
+      <span id="foot-name"></span>
+      <span class="foot-links" id="foot-links"></span>
+    </footer>
+  </main>
+</div>
+
+<script src="js/graph.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+{
+ "generated": "2026-11-24T07:07:55.553Z",
+ "notes": [
+  {
+   "id": "attention-is-all-you-need",
+   "title": "Attention Is All You Need",
+   "type": "paper",
+   "tags": [
+    "nlp",
+    "architecture"
+   ],
+   "authors": "Vaswani et al.",
+   "year": 2017,
+   "source": "NeurIPS",
+   "url": "https://arxiv.org/abs/1706.03762",
+   "lang": "ko",
+   "date": "",
+   "links": [
+    "bert",
+    "scaling-laws"
+   ],
+   "backlinks": [
+    "bert",
+    "scaling-laws",
+    "zettelkasten-luhmann"
+   ],
+   "html": "<p>RNN 없이 self-attention만으로 시퀀스를 처리하는 Transformer를 제안했다.</p>\n<ul>\n<li>토큰 간 거리가 멀어도 한 번의 행렬곱으로 연결된다. 순차 의존이 사라져 병렬화가 쉬워진다.</li>\n<li>계산량은 시퀀스 길이의 제곱으로 늘어난다. 긴 문맥에서 병목이 되는 이유이다.</li>\n<li>위치 정보는 구조가 아니라 positional encoding으로 따로 넣는다.</li>\n</ul>\n<p>후속 연구: <a class=\"wikilink\" href=\"#note=bert\" data-note=\"bert\">BERT</a>는 인코더만, <a class=\"wikilink\" href=\"#note=scaling-laws\" data-note=\"scaling-laws\">Scaling Laws for Neural Language Models</a>는 이 구조를 키웠을 때의 경향을 다룬다.</p>"
+  },
+  {
+   "id": "bert",
+   "title": "BERT",
+   "type": "paper",
+   "tags": [
+    "nlp",
+    "pretraining"
+   ],
+   "authors": "Devlin et al.",
+   "year": 2018,
+   "source": "NAACL 2019",
+   "url": "https://arxiv.org/abs/1810.04805",
+   "lang": "ko",
+   "date": "",
+   "links": [
+    "scaling-laws",
+    "instructgpt",
+    "attention-is-all-you-need"
+   ],
+   "backlinks": [
+    "attention-is-all-you-need"
+   ],
+   "html": "<p>마스크 언어 모델링(MLM)으로 양방향 문맥을 사전학습한 인코더.</p>\n<ul>\n<li>입력의 15%를 가리고 맞추게 해서 좌우 문맥을 동시에 쓴다.</li>\n<li>사전학습 후 태스크별 헤드만 붙여 파인튜닝한다.</li>\n<li>생성에는 맞지 않는다. 생성 쪽 흐름은 <a class=\"wikilink\" href=\"#note=scaling-laws\" data-note=\"scaling-laws\">Scaling Laws for Neural Language Models</a>와 <a class=\"wikilink\" href=\"#note=instructgpt\" data-note=\"instructgpt\">Training language models to follow instructions with human feedback</a>로 이어진다.</li>\n</ul>\n<p>기반 구조는 <a class=\"wikilink\" href=\"#note=attention-is-all-you-need\" data-note=\"attention-is-all-you-need\">Attention Is All You Need</a>.</p>"
+  },
+  {
+   "id": "chinchilla",
+   "title": "Training Compute-Optimal Large Language Models",
+   "type": "paper",
+   "tags": [
+    "nlp",
+    "scaling"
+   ],
+   "authors": "Hoffmann et al.",
+   "year": 2022,
+   "source": "NeurIPS",
+   "url": "https://arxiv.org/abs/2203.15556",
+   "lang": "ko",
+   "date": "",
+   "links": [
+    "scaling-laws"
+   ],
+   "backlinks": [
+    "scaling-laws"
+   ],
+   "html": "<p>주어진 연산량에서는 모델 크기와 학습 토큰 수를 같은 비율로 늘려야 최적이라는 결과.</p>\n<ul>\n<li><a class=\"wikilink\" href=\"#note=scaling-laws\" data-note=\"scaling-laws\">Scaling Laws for Neural Language Models</a>가 제안한 배분을 수정한다.</li>\n<li>기존 대형 모델 다수가 데이터 대비 과대했다는 해석이 나온다.</li>\n<li>추론 비용까지 고려하면 최적점이 다시 달라진다는 점은 따로 정리할 것.</li>\n</ul>"
+  },
+  {
+   "id": "instructgpt",
+   "title": "Training language models to follow instructions with human feedback",
+   "type": "paper",
+   "tags": [
+    "nlp",
+    "alignment"
+   ],
+   "authors": "Ouyang et al.",
+   "year": 2022,
+   "source": "NeurIPS",
+   "url": "https://arxiv.org/abs/2203.02155",
+   "lang": "ko",
+   "date": "",
+   "links": [
+    "scaling-laws"
+   ],
+   "backlinks": [
+    "bert"
+   ],
+   "html": "<p>사전학습 모델을 SFT, 보상모델, PPO 순으로 사람 선호에 맞춘다.</p>\n<ul>\n<li>1.3B 모델이 175B 원본보다 사람 평가에서 선호된다. 규모가 전부는 아니라는 근거이며 <a class=\"wikilink\" href=\"#note=scaling-laws\" data-note=\"scaling-laws\">Scaling Laws for Neural Language Models</a>와 대비된다.</li>\n<li>보상모델이 불완전하면 보상 해킹이 생긴다.</li>\n</ul>"
+  },
+  {
+   "id": "scaling-laws",
+   "title": "Scaling Laws for Neural Language Models",
+   "type": "paper",
+   "tags": [
+    "nlp",
+    "scaling"
+   ],
+   "authors": "Kaplan et al.",
+   "year": 2020,
+   "source": "arXiv",
+   "url": "https://arxiv.org/abs/2001.08361",
+   "lang": "ko",
+   "date": "",
+   "links": [
+    "chinchilla",
+    "attention-is-all-you-need"
+   ],
+   "backlinks": [
+    "attention-is-all-you-need",
+    "bert",
+    "chinchilla",
+    "instructgpt"
+   ],
+   "html": "<p>손실이 모델 크기, 데이터 양, 연산량의 거듭제곱 법칙을 따른다는 관찰.</p>\n<ul>\n<li>구조 세부 사항보다 규모가 성능에 더 크게 영향을 준다.</li>\n<li>같은 연산량이면 큰 모델을 덜 학습시키는 편이 유리하다고 결론 냈으나, 이후 연구에서 수정되었다. 메모 <a class=\"wikilink\" href=\"#note=chinchilla\" data-note=\"chinchilla\">Training Compute-Optimal Large Language Models</a> 참고.</li>\n</ul>\n<p><a class=\"wikilink\" href=\"#note=attention-is-all-you-need\" data-note=\"attention-is-all-you-need\">Attention Is All You Need</a> 구조가 전제이다.</p>"
+  },
+  {
+   "id": "zettelkasten-luhmann",
+   "title": "Zettelkasten와 Luhmann",
+   "type": "essay",
+   "tags": [
+    "pkm",
+    "method"
+   ],
+   "authors": "직접 정리",
+   "year": 2025,
+   "source": "",
+   "url": "",
+   "lang": "ko",
+   "date": "",
+   "links": [
+    "attention-is-all-you-need"
+   ],
+   "backlinks": [],
+   "html": "<p>메모를 주제 폴더가 아니라 링크로 분류하는 방식.</p>\n<ul>\n<li>한 메모에는 한 가지 생각만 적는다.</li>\n<li>새 메모는 기존 메모 중 최소 하나와 연결한다.</li>\n<li>읽은 논문의 요약은 <a class=\"wikilink\" href=\"#note=attention-is-all-you-need\" data-note=\"attention-is-all-you-need\">Attention Is All You Need</a>처럼 문헌 메모로 두고, 내 생각은 별도 메모로 분리한다.</li>\n</ul>"
+  }
+ ]
+}

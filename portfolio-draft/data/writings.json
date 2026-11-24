@@ -1,0 +1,35 @@
+[
+  {
+    "kind": "paper",
+    "title": "논문 제목 예시",
+    "venue": "Conference / Journal",
+    "year": 2021,
+    "authors": "Hong G., Kim A.",
+    "url": "",
+    "tags": [
+      "nlp"
+    ]
+  },
+  {
+    "kind": "essay",
+    "title": "테크니컬 에세이: 캐시 무효화는 왜 어려운가",
+    "venue": "Blog",
+    "year": 2024,
+    "authors": "",
+    "url": "",
+    "tags": [
+      "backend"
+    ]
+  },
+  {
+    "kind": "essay",
+    "title": "Zettelkasten를 코드 저장소로 운영하기",
+    "venue": "Blog",
+    "year": 2025,
+    "authors": "",
+    "url": "",
+    "tags": [
+      "pkm"
+    ]
+  }
+]
