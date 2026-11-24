@@ -61,6 +61,10 @@
     $("#lang").textContent = T("lang");
   }
 
+  const linkHtml = (l) => l.url
+    ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`
+    : `<span class="plain">${esc(l.label)}: ${esc(l.text)}</span>`;
+
   function renderProfile() {
     const p = D.profile;
     const name = L(p.name);
@@ -71,10 +75,10 @@
     $("#hero-role").textContent = L(p.role);
     $("#hero-tagline").textContent = L(p.tagline);
     $("#intro").textContent = L(p.intro);
-    const links = (p.links || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
+    const links = (p.links || []).map(linkHtml).join("");
     $("#hero-links").innerHTML = links;
     $("#foot-name").textContent = name.toUpperCase();
-    $("#foot-links").innerHTML = (p.links || []).map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
+    $("#foot-links").innerHTML = (p.links || []).map(linkHtml).join("");
     $("#timeline").innerHTML = (p.timeline || []).map((t) => `
       <li><small>${esc(t.period)}</small><div><b>${esc(L(t.title))}</b><p>${esc(L(t.desc))}</p></div></li>`).join("");
   }
