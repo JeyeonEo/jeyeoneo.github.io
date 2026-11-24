@@ -1,42 +1,40 @@
 {
-  "name": "홍길동",
-  "role": "소프트웨어 엔지니어 · 강사",
-  "tagline": "배운 것을 기록하고, 기록을 연결합니다.",
-  "intro": "책, 강의, 논문을 읽고 정리하는 개인 아카이브입니다. 아래 내용은 모두 예시이므로 data/*.json 에서 본인 내용으로 바꿔 주세요.",
+  "name": {
+    "ko": "어제연",
+    "en": "Jeyeon Yona Eo"
+  },
+  "role": {
+    "ko": "AI/AX 강사 · 독립 연구자",
+    "en": "AI/AX Instructor · Independent Researcher"
+  },
+  "tagline": {
+    "ko": "연구 주제: 윤리적 AI, LLM, 강화학습",
+    "en": "Research topics: ethical AI, LLM, RL"
+  },
+  "intro": {
+    "ko": "AI/AX 강사이자 독립 연구자입니다. 윤리적 AI, LLM, 강화학습을 연구하고, 읽은 책과 논문, 강의를 이곳에 기록합니다.",
+    "en": "AI/AX instructor and independent researcher working on ethical AI, LLMs and reinforcement learning. This site collects what I read, study and teach."
+  },
   "links": [
     {
       "label": "GitHub",
-      "url": "https://github.com/your-id"
+      "url": "https://github.com/JeyeonEo"
     },
     {
       "label": "Email",
-      "url": "mailto:you@example.com"
-    },
-    {
-      "label": "LinkedIn",
-      "url": "https://linkedin.com/in/your-id"
+      "text": "j e y e o n . y o n a . e o (at) g m a i l . c o m"
     }
   ],
   "timeline": [
     {
-      "period": "2024 – ",
-      "title": "회사명 · 시니어 엔지니어",
-      "desc": "담당 업무 한 줄 요약"
+      "period": "현재",
+      "title": "AI/AX 강사",
+      "desc": "AI 활용·전환(AX) 교육"
     },
     {
-      "period": "2021 – 2024",
-      "title": "회사명 · 엔지니어",
-      "desc": "담당 업무 한 줄 요약"
-    },
-    {
-      "period": "2019 – 2021",
-      "title": "OO대학교 대학원 석사",
-      "desc": "전공 및 연구 주제"
-    },
-    {
-      "period": "2015 – 2019",
-      "title": "OO대학교 학사",
-      "desc": "전공"
+      "period": "현재",
+      "title": "독립 연구자",
+      "desc": "윤리적 AI, LLM, 강화학습"
     }
   ]
 }
