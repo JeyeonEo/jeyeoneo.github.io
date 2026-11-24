@@ -5,7 +5,7 @@
     ko: {
       "nav.profile": "Profile", "nav.books": "Books", "nav.courses": "Courses", "nav.writing": "Writing", "nav.teaching": "Teaching", "nav.published": "Published", "nav.notes": "Notes",
       "sec.profile": "Profile", "sec.books": "Books", "sec.courses": "Courses & Certificates", "sec.writing": "Papers & Essays", "sec.teaching": "Teaching", "sec.published": "Published", "sec.notes": "Paper Notes",
-      "top.mid": "PERSONAL ARCHIVE / BOOKS · COURSES · NOTES", "side.label": "CONTENTS / 01",
+      "top.mid": "PERSONAL ARCHIVE / RESEARCH · TEACHING · NOTES", "side.label": "CONTENTS / 01",
       "hello": "안녕하세요, {name}입니다.",
       "sub.courses": "수강한 강의", "sub.certs": "자격증",
       "notes.sub": "읽은 논문의 짧은 메모입니다. 메모 사이의 링크가 그래프가 됩니다.",
@@ -20,7 +20,7 @@
     en: {
       "nav.profile": "Profile", "nav.books": "Books", "nav.courses": "Courses", "nav.writing": "Writing", "nav.teaching": "Teaching", "nav.published": "Published", "nav.notes": "Notes",
       "sec.profile": "Profile", "sec.books": "Books", "sec.courses": "Courses & Certificates", "sec.writing": "Papers & Essays", "sec.teaching": "Teaching", "sec.published": "Published", "sec.notes": "Paper Notes",
-      "top.mid": "PERSONAL ARCHIVE / BOOKS · COURSES · NOTES", "side.label": "CONTENTS / 01",
+      "top.mid": "PERSONAL ARCHIVE / RESEARCH · TEACHING · NOTES", "side.label": "CONTENTS / 01",
       "hello": "Hello, {name}.",
       "sub.courses": "Online courses", "sub.certs": "Certificates",
       "notes.sub": "Short memos on papers I read. Links between notes form the graph.",
@@ -113,7 +113,7 @@
     $("#writing-list").innerHTML = [...D.writings].sort(sortDesc).map((w) => `
       <li><span class="t"><span class="badge ${w.kind === "paper" ? "paper" : ""}">${esc(T(w.kind))}</span>${link(w.url, L(w.title))}</span>
       <span class="r">${w.year}</span>
-      <span class="m">${esc(w.venue)}${w.authors ? " · " + esc(w.authors) : ""} ${tags(w.tags)}</span></li>`).join("");
+      <span class="m">${esc(L(w.venue))}${w.authors ? " · " + esc(w.authors) : ""} ${tags(w.tags)}</span></li>`).join("");
   }
 
   function renderTeaching() {
@@ -204,7 +204,27 @@
     renderStatic(); renderProfile(); renderBooks(); renderCourses();
     renderWriting(); renderTeaching(); renderNotesList();
     renderGraphTags();
+    toggleEmpty();
     if (currentNote) openNote(currentNote);
+  }
+
+  function toggleEmpty() {
+    const empty = {
+      books: !D.books.length,
+      courses: !D.courses.courses.length && !D.courses.certs.length,
+      writing: !D.writings.length,
+      teaching: !D.teaching.length,
+      published: !D.products.length,
+      notes: !D.notes.notes.length,
+    };
+    let n = 0;
+    document.querySelectorAll(".panel").forEach((panel) => {
+      const hide = !!empty[panel.id];
+      panel.hidden = hide;
+      const a = document.querySelector(`#side-nav a[href="#${panel.id}"]`);
+      if (a) a.hidden = hide;
+      if (!hide) panel.querySelector("h2 span").textContent = String(++n).padStart(2, "0") + " /";
+    });
   }
 
   async function load() {

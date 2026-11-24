@@ -12,13 +12,17 @@
     "en": "Research topics: ethical AI, LLM, RL"
   },
   "intro": {
-    "ko": "AI/AX 강사이자 독립 연구자입니다. 윤리적 AI, LLM, 강화학습을 연구하고, 읽은 책과 논문, 강의를 이곳에 기록합니다.",
-    "en": "AI/AX instructor and independent researcher working on ethical AI, LLMs and reinforcement learning. This site collects what I read, study and teach."
+    "ko": "연구와 응용 AI를 오가며 일합니다. 지금은 LLM 기반 학습 시스템, 에이전트 AI, 인간 감독(human oversight), 평가를 주로 다루고, 이전에는 오프라인 강화학습과 멀티에이전트 시스템을 연구했습니다. 엔지니어와 기업 조직을 위한 실무형 AI 교육도 설계하고 강의합니다.",
+    "en": "I work across research and applied AI, currently on LLM-based learning systems, agentic AI, human oversight and evaluation. My earlier research was in offline reinforcement learning and multi-agent systems. I also design and teach practical AI programs for engineers and enterprise teams."
   },
   "links": [
     {
       "label": "GitHub",
       "url": "https://github.com/JeyeonEo"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/yona-dev/"
     },
     {
       "label": "Email",
@@ -27,14 +31,67 @@
   ],
   "timeline": [
     {
-      "period": "현재",
-      "title": "AI/AX 강사",
-      "desc": "AI 활용·전환(AX) 교육"
+      "period": "2026 –",
+      "title": {
+        "ko": "독립 AI 연구자 · 강사",
+        "en": "Independent AI researcher & instructor"
+      },
+      "desc": {
+        "ko": "LLM 기반 학습 시스템과 인간 감독을 연구하며 기업용 AI·에이전트 AI 교육 설계",
+        "en": "Researching LLM-based learning systems and human oversight; designing enterprise AI and agentic-AI programs"
+      }
     },
     {
-      "period": "현재",
-      "title": "독립 연구자",
-      "desc": "윤리적 AI, LLM, 강화학습"
+      "period": "2026",
+      "title": "Thinking-KT / BuddyBench",
+      "desc": {
+        "ko": "추론 모델 기반 지식 추적, 소아 사회성 개인화 벤치마크 연구",
+        "en": "Reasoning-model knowledge tracing; a privacy-constrained pediatric personalization benchmark"
+      }
+    },
+    {
+      "period": "2024 –",
+      "title": {
+        "ko": "팀스파르타 · AI 강사",
+        "en": "AI instructor · TeamSparta"
+      },
+      "desc": {
+        "ko": "엔지니어와 조직 교육을 위한 실무형 AI 커리큘럼 설계·강의",
+        "en": "Designing and teaching applied AI curricula for engineers and organizations"
+      }
+    },
+    {
+      "period": "2024",
+      "title": {
+        "ko": "AI 엔지니어 · Thingsflow / KRAFTON",
+        "en": "AI engineer · Thingsflow / KRAFTON"
+      },
+      "desc": {
+        "ko": "응용 AI 엔지니어링",
+        "en": "Applied AI engineering"
+      }
+    },
+    {
+      "period": "2022",
+      "title": {
+        "ko": "방문학자 · University of Southern California",
+        "en": "Visiting scholar · University of Southern California"
+      },
+      "desc": {
+        "ko": "미국 연구 방문",
+        "en": "Research visit in the United States"
+      }
+    },
+    {
+      "period": "2020",
+      "title": {
+        "ko": "스타트업 · AI 데이팅 서비스",
+        "en": "Startup · AI dating product"
+      },
+      "desc": {
+        "ko": "AI 매칭 시스템을 포함한 소비자용 소셜 서비스 개발·출시",
+        "en": "Built and launched a consumer social product with an AI matching system"
+      }
     }
   ]
 }

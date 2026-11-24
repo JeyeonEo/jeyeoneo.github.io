@@ -1,18 +1,1 @@
-[
-  {
-    "type": "course",
-    "title": "인강 제목 예시",
-    "platform": "Inflearn",
-    "year": 2024,
-    "url": "",
-    "desc": "총 12시간 · 수강생 N명"
-  },
-  {
-    "type": "ebook",
-    "title": "전자책 제목 예시",
-    "platform": "Ridi",
-    "year": 2025,
-    "url": "",
-    "desc": "PDF 180쪽"
-  }
-]
+[]

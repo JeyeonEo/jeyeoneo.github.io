@@ -1,7 +1,6 @@
 ---
 title: Zettelkasten와 Luhmann
 type: essay
-authors: 직접 정리
 year: 2025
 tags: [pkm, method]
 ---

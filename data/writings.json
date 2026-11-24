@@ -1,35 +1,50 @@
 [
   {
     "kind": "paper",
-    "title": "논문 제목 예시",
-    "venue": "Conference / Journal",
-    "year": 2021,
-    "authors": "Hong G., Kim A.",
-    "url": "",
+    "title": "A Training-Free Large Reasoning Model-based Knowledge Tracing Framework for Unified Prediction and Prescription",
+    "venue": {
+      "ko": "ARR 2026년 10월 · 심사 중 (arXiv:2601.01708)",
+      "en": "ARR October 2026 · under review (arXiv:2601.01708)"
+    },
+    "year": 2026,
+    "authors": "",
+    "url": "https://openreview.net/forum?id=Y3e2cEr0Ws",
     "tags": [
-      "nlp"
+      "knowledge-tracing",
+      "llm"
     ]
   },
   {
-    "kind": "essay",
-    "title": "테크니컬 에세이: 캐시 무효화는 왜 어려운가",
-    "venue": "Blog",
+    "kind": "paper",
+    "title": "BuddyBench: A Privacy-Constrained Multi-Task Benchmark for Pediatric Social-Communication Personalization",
+    "venue": "arXiv:2605.28089",
+    "year": 2026,
+    "authors": "",
+    "url": "https://arxiv.org/abs/2605.28089",
+    "tags": [
+      "benchmark"
+    ]
+  },
+  {
+    "kind": "paper",
+    "title": "The Impact of Dataset on Offline Reinforcement Learning Performance in UAV-Based Emergency Network Recovery Tasks",
+    "venue": "IEEE Communications Letters 28(5): 1058–1061",
     "year": 2024,
     "authors": "",
-    "url": "",
+    "url": "https://doi.org/10.1109/LCOMM.2023.3339478",
     "tags": [
-      "backend"
+      "rl"
     ]
   },
   {
-    "kind": "essay",
-    "title": "Zettelkasten를 코드 저장소로 운영하기",
-    "venue": "Blog",
-    "year": 2025,
+    "kind": "paper",
+    "title": "Can Expert Demonstration Guarantee Offline Performance in Sparse Reward Environment?",
+    "venue": "ICML Data-centric Machine Learning Research Workshop",
+    "year": 2023,
     "authors": "",
-    "url": "",
+    "url": "https://brainmil.wordpress.com/publications/",
     "tags": [
-      "pkm"
+      "rl"
     ]
   }
 ]

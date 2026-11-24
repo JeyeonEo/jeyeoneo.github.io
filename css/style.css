@@ -167,3 +167,4 @@ a.wikilink:hover { border-color: var(--accent); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .chips .plain { font-size: 13px; padding: 5px 16px; border: 1px solid var(--line); border-radius: 99px; background: rgba(255,255,255,.4); color: var(--ink); }
 .foot-links .plain { letter-spacing: .04em; }
+[hidden] { display: none !important; }

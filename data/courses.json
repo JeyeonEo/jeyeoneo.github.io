@@ -1,37 +1,4 @@
 {
-  "courses": [
-    {
-      "title": "Machine Learning Specialization",
-      "provider": "Coursera",
-      "year": 2023,
-      "url": "",
-      "tags": [
-        "ml"
-      ]
-    },
-    {
-      "title": "자료구조와 알고리즘",
-      "provider": "K-MOOC",
-      "year": 2022,
-      "url": "",
-      "tags": [
-        "cs"
-      ]
-    }
-  ],
-  "certs": [
-    {
-      "title": "정보처리기사",
-      "issuer": "한국산업인력공단",
-      "year": 2019,
-      "id": ""
-    },
-    {
-      "title": "AWS Certified Solutions Architect – Associate",
-      "issuer": "AWS",
-      "year": 2022,
-      "id": "",
-      "expires": 2025
-    }
-  ]
+  "courses": [],
+  "certs": []
 }
